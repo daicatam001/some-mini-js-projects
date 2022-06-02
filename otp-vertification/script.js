@@ -12,12 +12,20 @@ inputOpts.forEach(addInputEvent);
 inputOpts[0].focus();
 function addInputEvent(element, index, inputList) {
   element.addEventListener("keydown", function (event) {
-    event.stopPropagation();
+ 
+    // jumb back and forth when hit tab
     if (event.keyCode === KEY_CODE_TAB) {
-      return;
+      if (event.shiftKey && index - 1 >= 0) {
+        onFocus(inputList[index - 1]);
+        event.preventDefault();
+      } else if (!event.shiftKey && index + 1 < inputList.length) {
+        onFocus(inputList[index + 1]);
+        event.preventDefault();
+      }
+      return
     }
 
-    // jump into next input when hitt arrow right
+    // jump into next input when hit arrow right
     if (
       event.keyCode === KEY_CODE_ARROW_RIGHT &&
       index + 1 < inputList.length
@@ -57,6 +65,7 @@ function addInputEvent(element, index, inputList) {
       onFocus(inputList[index]);
     }
     event.preventDefault();
+    event.stopPropagation();
   });
 }
 
