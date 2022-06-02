@@ -11,20 +11,32 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  background-color: honeydew;
 }
+
+p {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
 
 .input-opt {
   display: flex;
   gap: 2rem;
 }
 
-.input-opt__input {
+input {
   text-align: center;
   width: 5rem;
   padding: 1rem;
   font-size: 3rem;
   font-weight: bold;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid gainsboro;
 }
-input::selection{
-  background-color: transparent;
+
+input:valid{
+  border-color: cadetblue;
 }
+

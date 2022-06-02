@@ -12,6 +12,7 @@ inputOpts.forEach(addInputEvent);
 inputOpts[0].focus();
 function addInputEvent(element, index, inputList) {
   element.addEventListener("keydown", function (event) {
+    event.stopPropagation();
     if (event.keyCode === KEY_CODE_TAB) {
       return;
     }
@@ -21,12 +22,14 @@ function addInputEvent(element, index, inputList) {
       event.keyCode === KEY_CODE_ARROW_RIGHT &&
       index + 1 < inputList.length
     ) {
-      inputList[index + 1].focus();
+      onFocus(inputList[index + 1]);
+      event.preventDefault();
       return;
     }
     // jump into preview input when hitt arrow right
     if (event.keyCode === KEY_CODE_ARROW_LEFT && index - 1 >= 0) {
-      inputList[index - 1].focus();
+      onFocus(inputList[index - 1]);
+      event.preventDefault();
       return;
     }
 
@@ -49,19 +52,11 @@ function addInputEvent(element, index, inputList) {
     }
     event.target.value = event.key;
     if (index + 1 < inputList.length) {
-      inputList[index + 1].focus();
-      event.preventDefault();
+      onFocus(inputList[index + 1]);
+    } else {
+      onFocus(inputList[index]);
     }
-    event.target.setSelectionRange(0, 0);
-  });
-
-  element.addEventListener("focus", function (event) {
     event.preventDefault();
-    event.target.setSelectionRange(0, 0);
-  });
-  element.addEventListener("click", function (event) {
-    event.preventDefault();
-    event.target.setSelectionRange(0, 0);
   });
 }
 
@@ -77,6 +72,9 @@ function deleteChar(inputList, index) {
     inputList[i].value = inputList[i + 1].value;
   }
   inputList[inputList.length - 1].value = "";
-  inputList[index].focus();
-  inputList[index].setSelectionRange(0, 0);
+  onFocus(inputList[index]);
+}
+function onFocus(element) {
+  element.focus();
+  element.setSelectionRange(0, 0);
 }
