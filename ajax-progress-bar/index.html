@@ -17,7 +17,18 @@
     <div id="ajax-bar"></div>
 
     <div class="container">
-      <button onclick="callAjax()">button</button>
+      <h1>Ajax progress bar</h1>
+      <p>Show loading bar when calling Ajax that use XMLHttpRequest underline</p>
+      <h2>Calling single request</h2>
+      <button onclick="callAjax()">Send</button>
+      <br>
+      <br>
+      <h2>Calling multiple requests at the same time</h2>
+      <button onclick="callAjaxAll()">Send</button>
+      <br>
+      <br>
+      <h2>Calling requests sequence</h2>
+      <button onclick="callAjaxSequence()">Send</button>
     </div>
 
     <script src="script.js"></script>
