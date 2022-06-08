@@ -21,6 +21,8 @@ let incrementTimeout;
 let endTimeout;
 let currentProgress = 0;
 let requestCount = 0;
+
+
 function callAjax() {
   axios.get("https://jsonplaceholder.typicode.com/posts");
 }
@@ -56,7 +58,6 @@ function start() {
     }
   } else {
     clearTimeout(endTimeout);
-    // ajaxBar.remove("style");
     ajaxBar.style.height = "10px";
     ajaxBar.style.width = 0;
     ajaxBar.style.opacity = 1;
@@ -79,7 +80,6 @@ function end() {
       currentProgress = 0;
       ajaxBar.removeAttribute("style");
     }, 500);
-  } else {
     clearTimeout(incrementTimeout);
   }
   requestCount--;
