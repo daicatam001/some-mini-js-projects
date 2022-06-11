@@ -1,0 +1,72 @@
+* {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.container {
+  border-radius: 6px;
+  width: 600px;
+  background-color: white;
+  margin: auto auto;
+  padding: 60px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.input-container {
+  position: relative;
+}
+
+input {
+  height: 56px;
+  line-height: 56px;
+  width: 100%;
+  font-size: 16px;
+  padding: 0 1rem;
+  border-radius: 4px;
+  border: 1px solid black;
+}
+
+input:focus {
+  border-color: darkcyan;
+  outline-color: darkcyan;
+}
+input:focus + label {
+  top: 0;
+  color: darkcyan;
+}
+
+label {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  background-color: white;
+  padding: 0 5px;
+  transition: top 0.3s ease-in-out;
+  font-size: 16px;
+}
+#show-pw-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+}

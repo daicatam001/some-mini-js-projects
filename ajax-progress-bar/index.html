@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Loading Bar</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
+      integrity="sha512-xIPqqrfvUAc/Cspuj7Bq0UtHNo/5qkdyngx6Vwt+tmbvTLDszzXM0G6c91LXmGrRx8KEPulT+AfOOez+TeVylg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="ajax-bar"></div>
+
+    <div class="container">
+      <h1>Ajax progress bar</h1>
+      <p>Show loading bar when calling Ajax that use XMLHttpRequest underline</p>
+      <h2>Calling single request</h2>
+      <button onclick="callAjax()">Send</button>
+      <br>
+      <br>
+      <h2>Calling multiple requests at the same time</h2>
+      <button onclick="callAjaxAll()">Send</button>
+      <br>
+      <br>
+      <h2>Calling requests sequence</h2>
+      <button onclick="callAjaxSequence()">Send</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
