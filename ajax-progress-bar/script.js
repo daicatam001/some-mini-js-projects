@@ -22,7 +22,6 @@ let endTimeout;
 let currentProgress = 0;
 let requestCount = 0;
 
-
 function callAjax() {
   axios.get("https://jsonplaceholder.typicode.com/posts");
 }
@@ -49,6 +48,7 @@ function callAjaxSequence() {
 
 function start() {
   const inc = Math.random() * 300 + 100;
+  // if have more than one request is processing the increasing progress bar
   if (requestCount > 0) {
     if (inc > currentProgress && currentProgress != 0) {
       incrementTimeout = setTimeout(() => {
@@ -56,6 +56,7 @@ function start() {
         currentProgress = inc;
       }, inc - currentProgress);
     }
+    // init random progess status
   } else {
     clearTimeout(endTimeout);
     ajaxBar.style.height = "10px";
@@ -74,6 +75,7 @@ function increment(number) {
 }
 
 function end() {
+  // progess to 100% when have only 1 request left
   if (requestCount === 1) {
     increment(100);
     endTimeout = setTimeout(() => {

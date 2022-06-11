@@ -44,13 +44,18 @@
     <div class="container">
       <h1>Password Vertification</h1>
       <div class="input-container">
-        <input type="password" id="input-password" />
+        <input type="password" id="password-input" required maxlength="100" />
         <label for="input-password">Password</label>
-        <svg role="button" id="show-pw-toggle" width="24" height="24">
+        <svg role="button" id="show-pw-toggler" width="24" height="24">
           <use xlink:href="#ico-eye"></use>
         </svg>
       </div>
-      <div > </div>
+      <div class="vld-pw-tags" > 
+        <div class="vld-tag uppercase">1 Uppercase</div>
+        <div class="vld-tag lowercase">1 Lowercase</div>
+        <div class="vld-tag numberic">1 Number</div>
+        <div class="vld-tag length">8 Characters</div>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
