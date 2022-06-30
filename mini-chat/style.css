@@ -1,0 +1,21 @@
+* {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+  }
+
+  .container{
+    max-width: 800px;
+    padding: 30px 20px;
+    margin: 0 auto;
+  }
+
+  .chat{
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+
+  .chat__header{
+    padding: 1.5rem;
+    background-color: darkslateblue;
+    color: white;
+  }
+  .chat__
