@@ -1,0 +1,129 @@
+* {
+    font-family: "Roboto", sans-serif;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+button {
+    padding: 0 4rem;
+    height: 4rem;
+    line-height: 4rem;
+    border-radius: 1rem;
+    background-color: coral;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    border: 0;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+}
+
+button:hover {
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+button:disabled{
+    opacity: 0.5;
+}
+
+#loading {
+    display: grid;
+    grid-template-columns: repeat(3, min-content);
+    gap: 0.5rem;
+}
+
+#loading .dot {
+    background-color: currentColor;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+#loading .dot1 {
+    animation-name: loading-dot-1;
+}
+#loading .dot2 {
+    animation-name: loading-dot-2;
+}
+#loading .dot3 {
+    animation-name: loading-dot-3;
+}
+
+@keyframes loading-dot-1 {
+    0% {
+        opacity: 1;
+        transform: scale(1)
+    }
+
+    33.33333% {
+        opacity: .25;
+        transform: scale(.8)
+    }
+
+    66.66667% {
+        opacity: .5;
+        transform: scale(.8)
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes loading-dot-2 {
+    0% {
+        opacity: .5;
+        transform: scale(.8)
+    }
+
+    33.33333% {
+        opacity: 1;
+        transform: scale(1)
+    }
+
+    66.66667% {
+        opacity: .25;
+        transform: scale(.8)
+    }
+
+    to {
+        opacity: .5;
+        transform: scale(.8)
+    }
+}
+
+@keyframes loading-dot-3 {
+    0% {
+        opacity: .25;
+        transform: scale(.8)
+    }
+
+    33.33333% {
+        opacity: .5;
+        transform: scale(.8)
+    }
+
+    66.66667% {
+        opacity: 1;
+        transform: scale(1)
+    }
+
+    to {
+        opacity: .25;
+        transform: scale(.8)
+    }
+}
