@@ -11,8 +11,23 @@ const inputOpts = document.querySelectorAll(".input-opt__input");
 inputOpts.forEach(addInputEvent);
 inputOpts[0].focus();
 function addInputEvent(element, index, inputList) {
-  element.addEventListener("keydown", function (event) {
- 
+  element.addEventListener("paste", function (event) {
+    event.preventDefault()
+    const paste = (event.clipboardData || window.clipboardData).getData("text");
+    if(!paste){
+      return;
+    }
+    const last = Math.min(inputList.length, paste.length + index);
+    for (let i = index; i < last; i++) {
+      if (NUMBER_ONLY_REGEX.test(paste[i - index])) {
+        inputList[i].value = paste[i - index];
+      }
+    }
+    onFocus(inputList[last - 1]);
+   
+  });
+
+  element.addEventListener("keydown", async function (event) {
     // jumb back and forth when hit tab
     if (event.keyCode === KEY_CODE_TAB) {
       if (event.shiftKey && index - 1 >= 0) {
@@ -22,7 +37,7 @@ function addInputEvent(element, index, inputList) {
         onFocus(inputList[index + 1]);
         event.preventDefault();
       }
-      return
+      return;
     }
 
     // jump into next input when hit arrow right
@@ -41,31 +56,25 @@ function addInputEvent(element, index, inputList) {
       return;
     }
 
-    // delete previous element when hit backspace
-    if (event.keyCode === KEY_CODE_BACKSAPCE && index - 1 >= 0) {
-      deleteChar(inputList, index - 1);
+    // delete current and jump back
+    if ([KEY_CODE_BACKSAPCE, KEY_CODE_DELETE].includes(event.keyCode)) {
+      deleteCharAndJumpBack(inputList, index);
       event.preventDefault();
       return;
     }
 
-    if (event.keyCode === KEY_CODE_DELETE && index >= 0) {
-      deleteChar(inputList, index);
+    if (!event.ctrlKey) {
       event.preventDefault();
-      return;
+      if (!NUMBER_ONLY_REGEX.test(event.key)) {
+        return;
+      }
+      event.target.value = event.key;
+      if (index + 1 < inputList.length) {
+        onFocus(inputList[index + 1]);
+      } else {
+        onFocus(inputList[index]);
+      }
     }
-
-    if (!NUMBER_ONLY_REGEX.test(event.key)) {
-      event.preventDefault();
-      return;
-    }
-    event.target.value = event.key;
-    if (index + 1 < inputList.length) {
-      onFocus(inputList[index + 1]);
-    } else {
-      onFocus(inputList[index]);
-    }
-    event.preventDefault();
-    event.stopPropagation();
   });
 }
 
@@ -76,12 +85,11 @@ function isCursorFirst(event) {
   return event.target.selectionStart === 0;
 }
 
-function deleteChar(inputList, index) {
-  for (let i = index; i < inputList.length - 1; i++) {
-    inputList[i].value = inputList[i + 1].value;
+function deleteCharAndJumpBack(inputList, index) {
+  inputList[index].value = "";
+  if (index > 0) {
+    onFocus(inputList[index - 1]);
   }
-  inputList[inputList.length - 1].value = "";
-  onFocus(inputList[index]);
 }
 function onFocus(element) {
   element.focus();

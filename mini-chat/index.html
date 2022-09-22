@@ -1,26 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Mini Chat</title>
-</head>
-<body>
-    
-    <h1>A mini chat</h1>
-
-    <div class="container">
-     <div class="chat">
-        <div class="chat__header">
-            <div class="chat__title">A mini chat</div>
-        </div>
-        <div class="chat__feed"></div>
-        <div class="chat__message"></div>
-     </div>
+  </head>
+  <body>
+    <div style="display: none">
+      <svg
+        id="ico-send"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M15.8539 0.145906C15.9232 0.215238 15.9705 0.30338 15.99 0.399383C16.0096 0.495386 16.0005 0.595019 15.9639 0.685906L10.1449 15.2329C10.0937 15.361 10.008 15.4725 9.89746 15.5551C9.78691 15.6377 9.65571 15.6881 9.51832 15.7009C9.38092 15.7138 9.24265 15.6884 9.11873 15.6277C8.9948 15.567 8.89003 15.4733 8.81593 15.3569L5.63793 10.3619L0.642932 7.18391C0.52625 7.10989 0.432283 7.00508 0.371402 6.88103C0.31052 6.75699 0.285089 6.61854 0.297917 6.48096C0.310744 6.34338 0.36133 6.21201 0.444093 6.10136C0.526855 5.99071 0.638578 5.90508 0.766932 5.85391L15.3139 0.0369056C15.4048 0.000317886 15.5045 -0.00876184 15.6005 0.0107943C15.6965 0.0303505 15.7846 0.0776807 15.8539 0.146906V0.145906ZM6.63593 10.0699L9.39693 14.4079L14.1299 2.57591L6.63593 10.0699ZM13.4229 1.86891L1.59093 6.60191L5.92993 9.36191L13.4239 1.86891H13.4229Z"
+          fill="currentColor"
+        />
+      </svg>
+      <svg
+        id="ico-attachment"
+        viewBox="0 0 13 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.11629 4.21398L4.50028 9.70576C4.3216 9.97618 4.25753 10.3065 4.32212 10.6241C4.3867 10.9417 4.57465 11.2207 4.84475 11.3999V11.3999C4.97877 11.4891 5.12911 11.551 5.2871 11.5821C5.4451 11.6131 5.60765 11.6127 5.76548 11.5808C5.9233 11.5488 6.07327 11.4861 6.2068 11.3961C6.34032 11.3061 6.45479 11.1907 6.54359 11.0563L10.793 4.6347C11.1327 4.12121 11.2566 3.49464 11.1379 2.8905C11.0192 2.28637 10.6674 1.75324 10.1586 1.40647C9.90209 1.23178 9.61343 1.10977 9.30936 1.04756C9.0053 0.985344 8.69188 0.984163 8.38734 1.04405C8.08281 1.10395 7.79321 1.22375 7.53535 1.39648C7.27749 1.5692 7.0565 1.79143 6.88522 2.05026L1.75488 9.80365C1.25533 10.5589 1.0752 11.4812 1.25387 12.3689C1.43254 13.2566 1.95546 14.0374 2.70829 14.5406V14.5406C3.08537 14.7924 3.5087 14.9668 3.95372 15.0536C4.39875 15.1405 4.85659 15.1381 5.30069 15.0466C5.74479 14.9551 6.16628 14.7764 6.54072 14.5207C6.91516 14.265 7.23509 13.9374 7.48193 13.557L11.9055 6.7373"
+          stroke="#9495AC"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+        />
+      </svg>
+      <svg
+        id="ico-emoj"
+        viewBox="0 0 16 16"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.38793 15.0888C12.2864 15.0888 15.4467 11.9285 15.4467 8.03001C15.4467 4.13153 12.2864 0.971191 8.38793 0.971191C4.48944 0.971191 1.3291 4.13153 1.3291 8.03001C1.3291 11.9285 4.48944 15.0888 8.38793 15.0888Z"
+          stroke="#9495AC"
+          stroke-miterlimit="10"
+        />
+        <path
+          d="M11.5231 9.89087C11.2794 10.5137 10.8556 11.0498 10.3057 11.4306C9.75589 11.8114 9.10502 12.0196 8.43626 12.0287C7.76751 12.0378 7.11122 11.8473 6.55124 11.4816C5.99126 11.1159 5.55301 10.5916 5.29248 9.9756"
+          stroke="#9495AC"
+          stroke-miterlimit="10"
+          stroke-linecap="round"
+        />
+        <path
+          d="M11.0533 6.81875C11.4431 6.81875 11.7592 6.50271 11.7592 6.11286C11.7592 5.72302 11.4431 5.40698 11.0533 5.40698C10.6634 5.40698 10.3474 5.72302 10.3474 6.11286C10.3474 6.50271 10.6634 6.81875 11.0533 6.81875Z"
+          fill="#9495AC"
+        />
+        <path
+          d="M5.94929 6.81875C6.33914 6.81875 6.65517 6.50271 6.65517 6.11286C6.65517 5.72302 6.33914 5.40698 5.94929 5.40698C5.55944 5.40698 5.24341 5.72302 5.24341 6.11286C5.24341 6.50271 5.55944 6.81875 5.94929 6.81875Z"
+          fill="#9495AC"
+        />
+      </svg>
     </div>
 
+    <div class="container">
+      <div class="chat">
+        <div class="chat__header">
+          <div class="chat__title">A mini chat</div>
+        </div>
+        <div class="chat__feed"></div>
+        <div class="chat__message">
+          <div class="chat__message__input-box">
+            <div class="chat__message__input-box__action">
+              <svg width="16" height="16" role="button">
+                <use xlink:href="#ico-attachment"></use>
+              </svg>
+              <svg width="16" height="16" role="button">
+                <use xlink:href="#ico-emoj"></use>
+              </svg>
+            </div>
+            <div id="message-input" contenteditable="true"></div>
+          </div>
+          <div class="chat__message__send">
+            <button class="chat__message__send_btn">
+              <svg width="16" height="16" role="button">
+                <use xlink:href="#ico-send"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <template id="my-message-temp">
+      <div class="chat__feed__message">
+        <div class="chat__feed__message__box">
+          <div class="chat__feed__message__text" el-text>{{text}}</div>
+          <div class="chat__feed__message__time" el-time>10/03/2022 10:30</div>
+        </div>
+        <div class="chat__feed__message__avatar"></div>
+      </div>
+    </template>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

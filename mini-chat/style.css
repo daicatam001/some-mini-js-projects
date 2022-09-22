@@ -1,21 +1,110 @@
 * {
-    font-family: "Roboto", sans-serif;
-    box-sizing: border-box;
-  }
+  font-family: "Open Sans", sans-serif;
+  box-sizing: border-box;
+}
 
-  .container{
-    max-width: 800px;
-    padding: 30px 20px;
-    margin: 0 auto;
-  }
+body {
+  background-color: azure;
+}
 
-  .chat{
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  }
+.container {
+  max-width: 800px;
+  padding: 30px 20px;
+  margin: 0 auto;
+}
 
-  .chat__header{
-    padding: 1.5rem;
-    background-color: darkslateblue;
-    color: white;
-  }
-  .chat__
+.chat {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  background-color: white;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__header {
+  padding: 1rem 1.5rem;
+  background-color: darkslateblue;
+}
+.chat__title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.chat__feed {
+  flex-grow: 1;
+  padding: 1rem 1.5rem;
+}
+.chat__message {
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.chat__message__send_btn {
+  border: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: aliceblue;
+  color: darkslateblue;
+  margin-bottom: 0.5rem;
+}
+
+.chat__message__input-box {
+  flex-grow: 1;
+  background-color: aliceblue;
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.chat__message__input-box__action {
+  position: absolute;
+  display: flex;
+  gap: 0.75rem;
+  right: 1rem;
+  bottom: 1.25rem;
+}
+#message-input {
+  outline: 0;
+  padding: 1.25rem 4rem 1.25rem 1.5rem;
+  white-space: wrap;
+  word-break: break-all;
+}
+
+.chat__feed__message {
+  padding-top: 1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.chat__feed__message__avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background-image: url("https://source.unsplash.com/random/60x60");
+  background-position: center;
+  background-size: cover;
+}
+.chat__feed__message__box {
+  box-shadow: 0px 2px 10px 2px rgba(54, 45, 160, 0.05);
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
+.chat__feed__message__time {
+  color: slategray;
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.25rem);
+  white-space: nowrap;
+  font-size: 0.75rem;
+}
